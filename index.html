@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+    <style type="text/css">
+        body{
+            background-color: #96c5c4;
+        }
+      .calculadora {
+      	width: 300px;
+      	padding: 30px;
+      	border: 1px solid #ccc;
+      	background-color: #a32020;
+      	border-radius: 5px;
+      	box-shadow: 5px 5px 20px #752d2d;
+      	margin:auto;
+        margin-top: 50px;
+      	text-align: center;
+      }
+      .calculadora input {
+      	width: 300px;
+      	margin-bottom: 9px;
+        margin-left: -3%;
+        border: 10px solid #0e2929;
+      	padding: 10px;
+      	border-radius: 10px;
+      	border:#e4e7e6;
+      	font-size: 30px;
+        box-shadow: 1px 1px 5px #a7bb8e;
+      }
+      .calculadora button {
+      	width: 28%;
+      	margin-right: 0%;
+      	margin-bottom: 5px;
+      	padding: 20px;
+      	border-radius: 5px;
+      	border: none;
+      	font-size: 20px;
+      	background-color: #56c2c0;
+      	cursor: pointer;
+      	transition: all .2s ease-in-out;
+        box-shadow: 1px 2px 15px #a7bb8e;
+      }
+      .calculadora button:hover {
+      	background-color: #85e1b3;
+      	color: #06673b;
+      }
+      .calculadora button:active {
+      	transform: translateY(2px);
+      } 
+    </style>
+  </head>
+  <body>
+    <div class="calculadora">
+      <input type="text" id="input" placeholder="0" disabled />
+      <button onclick="clearInput()">C</button>
+      <button onclick="insertOperator('/')">/</button>
+      <button onclick="insertOperator('-')">-</button>
+      <button onclick="insertOperator('*')">x</button>
+      <button onclick="(',')">,</button> <!-- Este botón no funciona lo he puesto para que se vea mejor -->
+      <button onclick="insertOperator('+')">+</button>
+      <button onclick="insertNumber('7')">7</button>
+      <button onclick="insertNumber('8')">8</button>
+      <button onclick="insertNumber('9')">9</button>
+      <button onclick="insertNumber('4')">4</button>
+      <button onclick="insertNumber('5')">5</button>
+      <button onclick="insertNumber('6')">6</button>
+      <button onclick="insertNumber('1')">1</button>
+      <button onclick="insertNumber('2')">2</button>
+      <button onclick="insertNumber('3')">3</button>
+      <button onclick="('%')">%</button> <!-- Este botón no funciona lo he puesto para que se vea mejor -->
+      <button onclick="insertNumber('0')">0</button>
+      <button onclick="calculate()">=</button>
+    </div>
+
+    <script>
+      let input = document.getElementById("input");
+      let operation = "";
+
+      function insertNumber(number) {
+        input.value += number;
+      }
+      function insertOperator(operator) {
+        if (input.value != "") {
+          operation = operator;
+          input.value += operator;
+        }
+      }
+      function calculate() {
+        if (input.value != "") {
+          let result = eval(input.value);
+          input.value = result;
+        }
+      }
+      function clearInput() {
+        input.value = "";
+      }
+    </script>
+  </body>
+</html>
